@@ -1,20 +1,71 @@
-.navigation{
+.navigation {
     height: 60px;
-  width: 100%;
-  display: flex;
-  position: fixed;
-  top: 0;
-  align-items: center;
-  padding: 0.5rem 0rem;
-  background-color: #fff;
-  color: black;
-  box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
-}
-
-
-.brand-name {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    align-items: center;
+    padding: 0.5rem 0;
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 2px 2px 2px rgba(60, 59, 59, 0.23);
+  }
+  
+  .brand-name {
     text-decoration: none;
     color: black;
     font-size: 1.3rem;
     margin-left: 1rem;
+    text-transform: uppercase;
+    border-right: 1px solid #ccc;
+    padding-right: 1rem;
+  }
+  
+  .navigation-menu ul {
+    display: flex;
+    padding: 0;
+    margin-left: 1rem; /* Increase space between brand-name and menu items */
+  }
+  
+  .navigation-menu li {
+    list-style-type: none;
+    margin: 0 1rem; /* Increase space between menu items */
+    text-transform: uppercase;
+    position: relative; /* Add a position property to the menu items */
+  }
+  
+  .navigation-menu li a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #333;
+    padding: 0.5rem 0;
+  }
+  
+  .navigation-menu li:hover:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    right: -20px;
+    bottom: -10px;
+    border: 2px solid #888989;
+    background: linear-gradient(to bottom right, #d3d9dc, #8c9195);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: skew(-20deg);
+    z-index: -1;
+  }
+  
+  .navigation-menu li:hover {
+    z-index: 1;
+  }
+  
+  
+  .navigation-menu li a:hover:before { /* Animate the trapezoid shape on hover */
+    width: 10px;
+    border-right-color: #007bff;
+    left: -10px;
+    z-index: -1; /* Push the shape below the anchor element */
   }
