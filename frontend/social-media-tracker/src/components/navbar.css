@@ -1,3 +1,4 @@
+
 .navigation {
     height: 60px;
     width: 100%;
@@ -6,9 +7,8 @@
     top: 0;
     align-items: center;
     padding: 0.5rem 0;
-    background-color: #fff;
+    background-color: transparent; 
     color: black;
-    box-shadow: 0 2px 2px 2px rgba(60, 59, 59, 0.23);
   }
   
   .brand-name {
@@ -24,14 +24,14 @@
   .navigation-menu ul {
     display: flex;
     padding: 0;
-    margin-left: 1rem; /* Increase space between brand-name and menu items */
+    margin-left: auto; 
   }
   
   .navigation-menu li {
     list-style-type: none;
-    margin: 0 1rem; /* Increase space between menu items */
+    margin: 0 1rem;
     text-transform: uppercase;
-    position: relative; /* Add a position property to the menu items */
+    position: relative;
   }
   
   .navigation-menu li a {
@@ -51,21 +51,20 @@
     left: -20px;
     right: -20px;
     bottom: -10px;
-    border: 2px solid #888989;
-    background: linear-gradient(to bottom right, #d3d9dc, #8c9195);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transform: skew(-20deg);
+    
+    background: #b5bec7; 
+    border-radius: 50%;
+    
     z-index: -1;
   }
   
   .navigation-menu li:hover {
     z-index: 1;
   }
-  
-  
-  .navigation-menu li a:hover:before { /* Animate the trapezoid shape on hover */
+  .navigation-menu li a:hover:before {
     width: 10px;
-    border-right-color: #007bff;
+   
     left: -10px;
-    z-index: -1; /* Push the shape below the anchor element */
+    z-index: -1;
   }
+  
