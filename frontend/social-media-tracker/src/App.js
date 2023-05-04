@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
-import Navbar from './components/navbar.js'
+import Navbar from './components/navbar.js';
+import Footer from './components/footer.js';
+
 function App() {
   
   return (
@@ -8,6 +9,7 @@ function App() {
       <div className="NavBar">
         {Navbar()}
       </div>
+
       <div className="Body">
         <h1>.</h1>
         <h1>.</h1>
@@ -32,10 +34,12 @@ function App() {
         <h1>.</h1>
         <h1>.</h1>
       </div>
+
+      <div className="Footer">
+        {Footer()}
+      </div>
     </div>
   );
 }
-const Group=(props) => {
-  return
-}
+
 export default App;
