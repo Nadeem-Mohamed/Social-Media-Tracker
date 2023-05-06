@@ -1,19 +1,52 @@
-.About {
+.main{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
   }
   
-  h1 {
-    font-size: 3rem;
+  .section{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ddd;
+  }
+  
+  .container{
+    width: 80%;
+    display: flex;
+    margin: auto;
+    padding-top: 100px;
+  }
+  
+  .content-section{
+    width: 65%;
+    text-align: center;
+    padding-right: 2rem;
+  }
+  
+  .content-section .title{
+    text-transform: uppercase;
+    font-size:20px;
     font-weight: 600;
     margin-bottom: 2rem;
   }
   
-  p {
+  .content-section .content p{
     font-size: 1.2rem;
     line-height: 1.5;
     margin-bottom: 1rem;
   }
   
+  .social-media-tracker {
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 4rem;
+  }
+  
+  .social-media-tracker div {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
