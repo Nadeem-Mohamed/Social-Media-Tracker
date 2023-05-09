@@ -30,7 +30,6 @@ function Login() {
         [ user ]
     );
 
-    // log out function to log the user out of google and set the profile array to null
     const logOut = () => {
         googleLogout();
         setProfile(null);
