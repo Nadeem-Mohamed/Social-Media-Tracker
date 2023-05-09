@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-import './login.css'
+import './login.css';
+
+
 function Login() {
     const [ user, setUser ] = useState([]);
     const [ profile, setProfile ] = useState([]);
@@ -37,7 +39,7 @@ function Login() {
 
     return (
         <div>
-            <h2>React Google Login</h2>
+            
             <br />
             <br />
             {profile ? (
@@ -51,7 +53,11 @@ function Login() {
                     <button onClick={logOut}>Log out</button>
                 </div>
             ) : (
-                <button onClick={() => login()}>Sign in with Google 🚀 </button>
+              <button onClick={() => login()}>
+              <img src="./google.png" className="App-logo" alt="logo" />
+    Sign in with Google
+</button>
+
             )}
         </div>
     );
