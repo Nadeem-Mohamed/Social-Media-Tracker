@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import './login.css';
+<img src="./assets/google.png" className="App-logo" alt="logo" />
+
 
 
 function Login() {
@@ -37,29 +39,34 @@ function Login() {
         setProfile(null);
     };
 
-    return (
+    
+      return (
         <div>
-            
-            <br />
-            <br />
-            {profile ? (
-                <div>
-                    <img src={profile.picture} alt="user image" />
-                    <h3>User Logged in</h3>
-                    <p>Name: {profile.name}</p>
-                    <p>Email Address: {profile.email}</p>
-                    <br />
-                    <br />
-                    <button onClick={logOut}>Log out</button>
-                </div>
-            ) : (
-              <button onClick={() => login()}>
-              <img src="./google.png" className="App-logo" alt="logo" />
-    Sign in with Google
-</button>
-
-            )}
+          <br />
+          <br />
+          {profile ? (
+            <div>
+              <img src={profile.picture} alt="user image" />
+              <h3>User Logged in</h3>
+              <p className="profile-info">Name: {profile.name}</p>
+              <p className="profile-info">Email Address: {profile.email}</p>
+              
+              
+              <br />
+              <br />
+              <button className="button" onClick={logOut}>
+                Log out
+              </button>
+            </div>
+          ) : (
+            <button className="button" onClick={() => login()}>
+              <img src="google.png" className="App-logo" alt="logo" />
+              Sign in with Google
+            </button>
+          )}
         </div>
-    );
+      );
+      
+    
 }
 export default Login;
