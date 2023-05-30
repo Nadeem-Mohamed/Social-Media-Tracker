@@ -7,14 +7,13 @@ export default function Footer() {
             <div class="footer-left">
             
                 <p class="footer-links">
-                    <a class="" href="#">Home</a>
-                    <a href="">About</a>
+                    <a class="" href="/">Home</a>
+                    <a href="/about">About</a>
                 </p>
                 <p>&copy; Social Media Tracker </p>
             </div>
             
         </footer>
-
     );
   }
   
