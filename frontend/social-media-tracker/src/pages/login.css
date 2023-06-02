@@ -13,7 +13,7 @@ body {
   color: #fff;
 }
 
-.Sign-in-Google-logo {
+.Sign-in-Google-logo, .Sign-in-Twitter-logo {
   height: 4vmin;
   pointer-events: none;
   display: inline;

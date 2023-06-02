@@ -4,7 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { BrowserResource, BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+
+// eslint-disable-next-line
+import { app } from './firebase-config.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
