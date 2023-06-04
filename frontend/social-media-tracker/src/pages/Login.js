@@ -1,72 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { getAuth, signInWithPopup, signInWithCredential, TwitterAuthProvider } from "firebase/auth";
+import { loginTwitter, logoutTwitter } from '../functions/Login-Function'
 import './login.css';
+import Authentication from '../functions/Authentication';
 
 function Login() {
 	const [ profile, setProfile ] = useState([]);
-
-	var accessToken = localStorage.getItem("accessToken")
-	var secret = localStorage.getItem("secret")
 	
-	const provider = new TwitterAuthProvider();
-	const auth = getAuth()
-
 	const logOut = () => {
-		localStorage.removeItem("accessToken")
-		localStorage.removeItem("secret")
+		logoutTwitter()
 		setProfile(null);
 	};
-
-	const autoSignIn =()=> {
-		if(accessToken == null) {
-			logOut();
-		} else {
-			var cred = TwitterAuthProvider.credential(accessToken, secret);
-
-			signInWithCredential(auth, cred)
-			.then((re)=>{
-				console.log(re);
-				const credential2 = TwitterAuthProvider.credentialFromResult(re);
-				localStorage.setItem("accessToken", credential2.accessToken);
-				localStorage.setItem("secret", credential2.secret);
-				
-				const twitProf = {
-					'name': re._tokenResponse.displayName,
-					'profileName': re._tokenResponse.screenName,
-					'picture': re._tokenResponse.photoUrl
-				}
-				setProfile(twitProf);
-			})
-			.catch((err)=>{
-				console.log('Login Failed:', err);
-			})
-		}
-	}
-
-	// eslint-disable-next-line
-	useEffect(autoSignIn,[]) 
 	
 	const twitterLogin = ()=>{
-		signInWithPopup(auth, provider)
-		.then((re)=>{
-			const credential = TwitterAuthProvider.credentialFromResult(re);
-
-			localStorage.setItem("accessToken", credential.accessToken);
-			localStorage.setItem("secret", credential.secret);
-
-			console.log(credential);
-
+		loginTwitter()
+		.then((re) => {
 			const twitProf = {
 				'name': re._tokenResponse.displayName,
 				'profileName': re._tokenResponse.screenName,
-				'picture': re._tokenResponse.photoUrl
+				// 'picture': re._tokenResponse.photoUrl
 			}
-			setProfile(twitProf);
-			
+			setProfile(twitProf)
 		})
-		.catch((err)=>{
-			console.log('Login Failed:', err);
-		})
+	}
+
+	const changeUser = () => {
+		var userInfoAuth = Authentication();
+		if(userInfoAuth) {
+			return userInfoAuth;
+		}
+		return false;
+	}
+	
+	let userInfo = changeUser()
+	if(userInfo) {
+		profile.name = userInfo.displayName
+		profile.profileName = userInfo.reloadUserInfo.screenName
+		console.log(userInfo.reloadUserInfo.Sc)
 	}
 
 	return (

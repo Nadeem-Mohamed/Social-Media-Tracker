@@ -1,7 +1,18 @@
 import './navbar.css';
 import { Link } from "react-router-dom";
+import Authentication from '../functions/Authentication';
 
 export default function Navbar() {
+
+  const changeUser = () => {
+    var userInfo = Authentication();
+    if(userInfo) {
+      return userInfo.displayName;
+    }
+    return null;
+  }
+
+  let username = changeUser() || "Login"
   return (
     <nav className="navigation">
       <a href="/" className="brand-name">
@@ -16,7 +27,7 @@ export default function Navbar() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login">{username}</Link>
           </li>
         </ul>
       </div>
