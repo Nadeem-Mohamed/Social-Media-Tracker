@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import { loginTwitter, logoutTwitter } from '../functions/Login-Function'
+import { loginTwitter } from '../functions/Login-Function'
 import './login.css';
 import Authentication from '../functions/Authentication';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 	const [ profile, setProfile ] = useState([]);
-	
-	const logOut = () => {
-		logoutTwitter()
-		setProfile(null);
-	};
+	const navigate = useNavigate();
 	
 	const twitterLogin = ()=>{
 		loginTwitter()
@@ -21,12 +18,12 @@ function Login() {
 			setProfile(twitProf)
 		})
 	}
-
+	
 	const changeUser = () => {
 		var userInfoAuth = Authentication();
 		if(userInfoAuth) {
 			return userInfoAuth;
-		}
+		} 
 		return false;
 	}
 	
@@ -34,22 +31,12 @@ function Login() {
 	if(userInfo) {
 		profile.name = userInfo.displayName
 		profile.profileName = userInfo.reloadUserInfo.screenName
-		console.log(userInfo.reloadUserInfo.Sc)
+
+		navigate('/');
 	}
 
 	return (
 		<div className="Login-page">
-		  {profile ? (
-			<div>
-			  <img src={profile.picture} alt="User Profile" />
-			  <h3>User Logged in</h3>
-			  <p className="profile-info">Name: {profile.name}</p>
-			  <p className="profile-info">Profile: {profile.profileName}</p>
-			  <button className="Sign-in-button" onClick={logOut}>
-				Log out
-			  </button>
-			</div>
-		  ) : (
 			<div>
 				<button className="Sign-in-button" onClick={() => twitterLogin()}>
 					<img src={process.env.PUBLIC_URL + "/assets/twitter.png"} className="Sign-in-Twitter-logo" alt="Google Logo" />
@@ -58,7 +45,6 @@ function Login() {
 					</p>
 				</button>
 			</div>
-		  )}
 		</div>
 	);
 }
