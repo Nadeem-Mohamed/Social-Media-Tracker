@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { loginTwitter, logoutTwitter } from '../functions/Login-Function'
 import './login.css';
 import Authentication from '../functions/Authentication';
@@ -17,7 +17,6 @@ function Login() {
 			const twitProf = {
 				'name': re._tokenResponse.displayName,
 				'profileName': re._tokenResponse.screenName,
-				// 'picture': re._tokenResponse.photoUrl
 			}
 			setProfile(twitProf)
 		})
