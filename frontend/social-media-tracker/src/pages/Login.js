@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
 import { loginTwitter } from '../functions/Login-Function'
 import './login.css';
 import Authentication from '../functions/Authentication';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-	const [ profile, setProfile ] = useState([]);
 	const navigate = useNavigate();
 	
 	const twitterLogin = ()=>{
 		loginTwitter()
-		.then((re) => {
-			const twitProf = {
-				'name': re._tokenResponse.displayName,
-				'profileName': re._tokenResponse.screenName,
-			}
-			setProfile(twitProf)
-		})
 	}
 	
 	const changeUser = () => {
@@ -29,10 +20,7 @@ function Login() {
 	
 	let userInfo = changeUser()
 	if(userInfo) {
-		profile.name = userInfo.displayName
-		profile.profileName = userInfo.reloadUserInfo.screenName
-
-		navigate('/');
+		navigate('/stats');
 	}
 
 	return (

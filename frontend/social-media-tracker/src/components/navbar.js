@@ -13,9 +13,9 @@ export default function Navbar() {
     return null;
   }
 
-  let username = changeUser() || false  
+  let username = changeUser() || false
 
-  const myFunction = () => {
+  const showDropdown = () => {
     document.getElementsByClassName("dropdown-content")[0].classList.toggle("show");
   }
 
@@ -45,9 +45,9 @@ export default function Navbar() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <button onClick={myFunction} className="dropbtn">{username}</button>
+            <button onClick={showDropdown} className="dropbtn">{username}</button>
             <div class="dropdown-content">
-              <Link to="#">Link 1</Link>
+              <Link to="stats">Dashboard</Link>
               <Link to="#">Link 2</Link>
               <Link onClick={logoutTwitter}>Log Out</Link>
             </div>
