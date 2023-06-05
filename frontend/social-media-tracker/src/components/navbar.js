@@ -48,7 +48,7 @@ export default function Navbar() {
             <button onClick={showDropdown} className="dropbtn">{username}</button>
             <div class="dropdown-content">
               <Link to="stats">Dashboard</Link>
-              <Link to="#">Link 2</Link>
+              {/* <Link to="#">Link 2</Link> */}
               <Link onClick={logoutTwitter}>Log Out</Link>
             </div>
           </li>
