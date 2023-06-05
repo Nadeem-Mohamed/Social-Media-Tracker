@@ -8,40 +8,20 @@ import About from "./pages/About.js";
 import Login from "./pages/Login.js";
 import Stats from './pages/Stats.js';
 
+import { createNewUser, readUser } from './functions/Database-Functions';
 import Authentication from './functions/Authentication';
-import { getUserDocument, createUserDocument } from './functions/Database-Functions';
+import { useEffect } from 'react';
 
 function App() {
   
-  // START
-  const changeUser = () => {
-    var userInfo = Authentication();
-    if(userInfo) {
-      try {
-        getUserDocument(userInfo.uid)
-        .then((document) => {
-          if(document === false) {
-            const data = {
-              uid: userInfo.uid,
-              stats: []
-            }
-            createUserDocument(userInfo.uid, data)
-          } else {
-            console.log(document.data())
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-      } catch (err) {
-        console.log(err);
-      }
+  let userData = readUser() || false
+  let signedIn = Authentication() || false
+  console.log(userData, signedIn)
+  useEffect(()=>{
+    if(!userData && signedIn) {
+      createNewUser()
     }
-  }
-
-  let userData = changeUser() || false
-
-  // END
+  },[])
 
   return (
     <div className="App">

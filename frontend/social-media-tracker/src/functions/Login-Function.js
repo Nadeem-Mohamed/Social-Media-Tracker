@@ -1,5 +1,6 @@
 import { signInWithPopup, signInWithCredential, TwitterAuthProvider, signOut } from "firebase/auth";
 import { auth } from '../firebase-config'
+import { createNewUser } from "./Database-Functions";
 
 const provider = new TwitterAuthProvider();
 
@@ -27,6 +28,7 @@ function loginTwitter() {
 
 				localStorage.setItem("accessToken", credential.accessToken);
 				localStorage.setItem("secret", credential.secret);
+				createNewUser();
 				resolve(re)				
 			})
 			.catch((err)=>{
