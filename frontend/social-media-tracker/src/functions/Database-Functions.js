@@ -1,14 +1,15 @@
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase-config'
-import Authentication from './Authentication'
+
+const path = '/users/'
 
 async function getUserDocument(id) {
 	return (
 	  new Promise(async (resolve, reject) => {
-		if((await getDoc(doc(db, `/test/${id}`))).data() === undefined) {
+		if((await getDoc(doc(db, `${path + id}`))).data() === undefined) {
 			resolve(false)
 		} else {
-			await getDoc(doc(db, `/test/${id}`))
+			await getDoc(doc(db, `${path + id}`))
 			.then((q) => {
 				resolve(q)
 			})
@@ -23,8 +24,8 @@ async function getUserDocument(id) {
 async function createUserDocument(id, data) {
 	return (
 	  new Promise(async (resolve, reject) => {
-		if(!doc(db, `/test/${id}`).exists) {
-			await setDoc(doc(db, `/test/${id}`), data)
+		if(!doc(db, `${path + id}`).exists) {
+			await setDoc(doc(db, `${path + id}`), data)
 			resolve(true)
 		} else {
 			resolve(false)
@@ -33,8 +34,7 @@ async function createUserDocument(id, data) {
 	) 
 )}
 
-const createNewUser = () => {
-    var userInfo = Authentication();
+async function createNewUser(userInfo) {
     if(userInfo) {
       try {
         getUserDocument(userInfo.uid)
@@ -61,25 +61,28 @@ const createNewUser = () => {
 	return false;
 }
 
-const readUser = () => {
-	var userInfo = Authentication();
-    if(userInfo) {
-      try {
-        getUserDocument(userInfo.uid)
-        .then((document) => {
-          if(document === false) {
-            return false;
-          } else {
-            return document.data();
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-      } catch (err) {
-        console.log(err);
-      }
-    }
+async function readUser(userInfo) {
+	return(
+		new Promise(async (resolve, reject) => {
+			if(userInfo) {
+			try {
+				getUserDocument(userInfo.uid)
+				.then((document) => {
+				if(document === false) {
+					resolve(false)
+				} else {
+					resolve(document.data())
+				}
+				})
+				.catch((err) => {
+				console.log(err);
+				})
+			} catch (err) {
+				console.log(err);
+			}
+			}
+		})
+	)
 }
 
 export { getUserDocument, createUserDocument, createNewUser, readUser }

@@ -8,20 +8,14 @@ import About from "./pages/About.js";
 import Login from "./pages/Login.js";
 import Stats from './pages/Stats.js';
 
-import { createNewUser, readUser } from './functions/Database-Functions';
-import Authentication from './functions/Authentication';
+import setNewUser from './functions/User-Function';
 import { useEffect } from 'react';
 
 function App() {
-  
-  let userData = readUser() || false
-  let signedIn = Authentication() || false
-  console.log(userData, signedIn)
-  useEffect(()=>{
-    if(!userData && signedIn) {
-      createNewUser()
-    }
-  },[])
+
+  useEffect(() => {
+    setNewUser()
+  }, [])
 
   return (
     <div className="App">
