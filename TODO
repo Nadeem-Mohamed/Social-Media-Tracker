@@ -1,14 +1,20 @@
 Create front end
-
-Database:
-Pocketbase
 Firebase
-
-Python Backened
+Python Backend
 
 Connect to social media API's:
 Instagram https://developers.facebook.com/products/instagram/apis/   
 Twitter https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api
+setup twitter api for user authentication
+login on website
+
+firebase
+github pages
+
+user stats page
+
+
+Instagram https://developers.facebook.com/products/instagram/apis/
 Youtube? https://developers.google.com/youtube/v3/
 Facebook?
 Twitch?
