@@ -9,40 +9,32 @@ import Login from "./pages/Login.js";
 import Stats from './pages/Stats.js';
 
 import Authentication from './functions/Authentication';
-import {auth, app, db} from './firebase-config'
-import { collection, doc, query, setDoc, where, getDoc } from 'firebase/firestore';
+import { getUserDocument, createUserDocument } from './functions/Database-Functions';
 
 function App() {
   
   // START
   const changeUser = () => {
     var userInfo = Authentication();
-    // console.log(userInfo.uid)  
     if(userInfo) {
-      const users = collection(db, "test")
       try {
-        var q = 0;
-        const test = async() => {
-          q = await getDoc(doc(db, `/test/${userInfo.uid}`))
-          return q
-        }
-
-        // const w = setDoc(doc(db, `/test/${userInfo.uid}`), {
-        //   useruid: userInfo.uid,
-        //   calendarEvents: []
-        // })
-        test().then(() => {
-          console.log(q.exists);
-        //   if(q == undefined || q == null) {
-        //   }
-          
-        //   test().then(() => {
-        //     console.log(q);
-        //   });
-        });
-        
+        getUserDocument(userInfo.uid)
+        .then((document) => {
+          if(document == false) {
+            const data = {
+              uid: userInfo.uid,
+              stats: []
+            }
+            createUserDocument(userInfo.uid, data)
+          } else {
+            console.log(document.data())
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     }
   }
