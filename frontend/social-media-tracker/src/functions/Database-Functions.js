@@ -4,7 +4,7 @@ import { db } from '../firebase-config'
 async function getUserDocument(id) {
 	return (
 	  new Promise(async (resolve, reject) => {
-		if((await getDoc(doc(db, `/test/${id}`))).data() == undefined) {
+		if((await getDoc(doc(db, `/test/${id}`))).data() === undefined) {
 			resolve(false)
 		} else {
 			await getDoc(doc(db, `/test/${id}`))

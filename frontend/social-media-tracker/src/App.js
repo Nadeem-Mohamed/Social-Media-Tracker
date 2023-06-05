@@ -20,7 +20,7 @@ function App() {
       try {
         getUserDocument(userInfo.uid)
         .then((document) => {
-          if(document == false) {
+          if(document === false) {
             const data = {
               uid: userInfo.uid,
               stats: []
@@ -39,7 +39,7 @@ function App() {
     }
   }
 
-  let username = changeUser() || false
+  let userData = changeUser() || false
 
   // END
 
