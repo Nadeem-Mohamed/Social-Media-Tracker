@@ -3,6 +3,18 @@ body {
   margin-top: 40px;
 }
 
+.Login-page {
+  height: 70vh;
+}
+
+.Button-holder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -125px; 
+}
+
+
 .App-header {
   background-color: #b9c2cb;
   display: flex;
@@ -13,7 +25,7 @@ body {
   color: #fff;
 }
 
-.Sign-in-Google-logo, .Sign-in-Twitter-logo {
+.Sign-in-Twitter-logo {
   height: 4vmin;
   pointer-events: none;
   display: inline;

@@ -25,7 +25,7 @@ function Login() {
 
 	return (
 		<div className="Login-page">
-			<div>
+			<div className="Button-holder">
 				<button className="Sign-in-button" onClick={() => twitterLogin()}>
 					<img src={process.env.PUBLIC_URL + "/assets/twitter.png"} className="Sign-in-Twitter-logo" alt="Google Logo" />
 					<p className="Sign-in-text">
