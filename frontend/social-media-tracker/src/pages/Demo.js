@@ -12,10 +12,10 @@ const data = [
 	{x: "2023-06-23", y: 132229792},
 ];
 
-export default function Stats() {
+export default function Demo() {
     return (
 		<>
-		<h1 className="userTitle">user's Twitter</h1>
+		<h1 className="userTitle">Barack Obama's Twitter</h1>
 		<h2 className="userGraphTitle">Followers over Time</h2>
 		<ResponsiveContainer width="95%" aspect={3}>
 		<LineChart

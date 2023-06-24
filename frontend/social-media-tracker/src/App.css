@@ -2,3 +2,7 @@
   margin-top: calc(1rem + 60px);
   height: 1px;
 }
+
+.Body {
+  min-height: 90vh;
+}

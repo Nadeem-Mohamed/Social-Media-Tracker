@@ -7,6 +7,7 @@ import Home from "./pages/Home.js";
 import About from "./pages/About.js";
 import Login from "./pages/Login.js";
 import Stats from './pages/Stats.js';
+import Demo from './pages/Demo.js';
 
 import setNewUser from './functions/User-Function';
 import { useEffect } from 'react';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/stats" element={<Stats />} />
+          <Route path="/demo" element={<Demo />} />
         </Routes>
       </div>
 
