@@ -7,7 +7,6 @@ export default function setNewUser() {
 		if (user) {
 			readUser(user)
 			.then((userData) => {
-				console.log(userData)
 				try {
 					if(userData === false) {
 						createNewUser(user)
