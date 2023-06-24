@@ -8,7 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 export default function Stats() {
   
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({stats: [{x: "0", y: 0},]});
   const [user, setUser] = useState("");
 
   onAuthStateChanged(auth, (user) => {
